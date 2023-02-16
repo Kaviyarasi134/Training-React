@@ -1,6 +1,6 @@
-<script>
-function validateform()
+ function validateform()
 {
+	var data = "";
 	var UserName = document.myform.UserName.value;
 	var email = document.myform.email.value;
 	var password = document.myform.password.value;
@@ -11,17 +11,27 @@ function validateform()
 		alert("Name cant be Blank");
 		return false;
 	}
-	elseif(password.length<6){
+	else if(password.length<6){
 		alert("password must be at least 6 charactor.");
 		return false;
 	}
-	elseif(password != confirmedpassword)
+	else if(password !== confirmedpassword)
 	{
 		alert("Password Mismatched. Recheck and give the correct One ")
 		return false;
 	}
 	else{
-		alert("done");
+		data = {
+			"UserName":UserName,
+			"email":email,
+			"password":password,
+			"confirmedpassword":confirmedpassword
+		}
+		alert(JSON.stringify(data));
+		console.log(data);
+		
 	}
-}
-</script>
+} 
+// $(document).ready(() => {
+//     console.log("Hello World!");
+// });
